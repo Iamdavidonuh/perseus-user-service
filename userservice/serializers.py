@@ -7,7 +7,9 @@ class EmailSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Email
         fields = [
+            "id",
             "mail",
+            "user",
         ]
 
 
@@ -15,7 +17,9 @@ class PhoneNumberSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.PhoneNumber
         fields = [
+            "id",
             "number",
+            "user",
         ]
 
 
