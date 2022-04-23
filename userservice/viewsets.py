@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, mixins, response
+from rest_framework import viewsets, mixins, response, filters
 from userservice import serializers
 from userservice.models import Email, PhoneNumber, User
 
@@ -7,6 +7,8 @@ from userservice.models import Email, PhoneNumber, User
 class UserViewset(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
+    search_fields = ["firstName", "lastName"]
+    filter_backends = [filters.SearchFilter]
 
     def get_serializer(self, *args, **kwargs):
         kwargs.update({"partial": True})
