@@ -16,9 +16,11 @@ urlpatterns = [
     path(
         "user-emails/<int:user_pk>",
         viewsets.UserEmailViewset.as_view({"get": "retrieve"}),
+        name="get-user-emails",
     ),
     path(
         "user-phone-numbers/<int:user_pk>",
         viewsets.UserPhoneNumberViewset.as_view({"get": "retrieve"}),
+        name="get-user-phone-numbers",
     ),
 ]

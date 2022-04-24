@@ -15,12 +15,7 @@ class UserViewset(viewsets.ModelViewSet):
         return super().get_serializer(*args, **kwargs)
 
 
-class UserEmailViewset(
-    viewsets.GenericViewSet,
-    mixins.RetrieveModelMixin,
-    mixins.CreateModelMixin,
-    mixins.UpdateModelMixin,
-):
+class UserEmailViewset(viewsets.ModelViewSet):
     serializer_class = serializers.EmailSerializer
     queryset = Email.objects.all()
 
@@ -33,12 +28,7 @@ class UserEmailViewset(
         return super().retrieve(request, *args, **kwargs)
 
 
-class UserPhoneNumberViewset(
-    viewsets.GenericViewSet,
-    mixins.RetrieveModelMixin,
-    mixins.CreateModelMixin,
-    mixins.UpdateModelMixin,
-):
+class UserPhoneNumberViewset(viewsets.ModelViewSet):
     serializer_class = serializers.PhoneNumberSerializer
     queryset = PhoneNumber.objects.all()
 
