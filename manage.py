@@ -6,7 +6,12 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'perseus.settings')
+    is_docker = os.environ.get("IS_DOCKER", False)
+    settings_path = "perseus.settings.local_settings"
+    if is_docker:
+        settings_path = "perseus.settings.docker"
+
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings_path)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -18,5 +23,5 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
