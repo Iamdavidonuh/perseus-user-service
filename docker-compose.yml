@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgres/data
+    environment:
+      - POSTGRES_DB=perseus_db
+      - POSTGRES_USER=perseus_user
+      - POSTGRES_PASSWORD=perseus_pass
+  web:
+    build: .
+    command:
+      python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - IS_DOCKER=True
+      - POSTGRES_DB=perseus_db
+      - POSTGRES_USER=perseus_user
+      - POSTGRES_PASSWORD=perseus_pass
+      - DJANGO_DEBUG=True
+    depends_on:
+      - db
