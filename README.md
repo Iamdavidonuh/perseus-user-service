@@ -5,7 +5,7 @@
 # Table of Contents
 1. [Summary](#Summary)
 2. [Installation](#Installation)
-3. [Alternatively, Run with Docker](#Docker)
+3. [Alternatively, Run with Docker](#Using%20Docker)
 4. [Navigation](#Navigation)
 5. [Endpoints](#Endpoints)
 
@@ -210,7 +210,7 @@ You can navigate the application using:
         ```
         Response
 
-            
+          {
                 "id": 1,
                 "lastName": "Updated",
                 "firstName": "user",
